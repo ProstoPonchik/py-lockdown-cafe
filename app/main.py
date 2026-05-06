@@ -14,13 +14,13 @@ def go_to_cafe(friends: list, cafe: Cafe) -> str:
         except NotWearingMaskError:
             masks_to_buy += 1
 
-    if valid_vacine != 0:
+    if valid_vacine:
         return "All friends should be vaccinated"
 
-    if masks_to_buy != 0:
+    if masks_to_buy:
         return f"Friends should buy {masks_to_buy} masks"
 
-    return "Friends can go to KFC"
+    return f"Friends can go to {cafe.name}"
 
 
 if __name__ == "__main__":
@@ -35,9 +35,9 @@ if __name__ == "__main__":
         {
             "name": "Bob",
             "vaccine": {
-                "expiration_date": datetime.date.today()
+                "expiration_date": datetime.date(2019, 2, 22)
             },
-            "wearing_a_mask": True
+            "wearing_a_mask": False
         },
     ]
     print(go_to_cafe(friends, Cafe("KFC")))
